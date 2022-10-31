@@ -1,0 +1,18 @@
+#!/command/with-contenv sh
+
+# Set default values if needed
+export TTRSS_DB_PORT=${TTRSS_DB_PORT:-5432}
+export TTRSS_DB_NAME=${TTRSS_DB_NAME:-$TTRSS_DB_USER}
+
+export PGPASSWORD=$TTRSS_DB_PASS
+
+# Create schema if not already set
+PSQL="psql -h $TTRSS_DB_HOST -p $TTRSS_DB_PORT -U $TTRSS_DB_USER -d $TTRSS_DB_NAME"
+$PSQL -c "create extension if not exists pg_trgm"
+
+if ! $PSQL -c 'select * from ttrss_version'; then
+  $PSQL < /app/schema/ttrss_schema_pgsql.sql
+fi
+
+s6-setuidgid www-data php7 /app/update.php --update-schema=force-yes
+exec s6-setuidgid www-data php7 /app/update_daemon2.php
