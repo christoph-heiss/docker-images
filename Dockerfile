@@ -28,10 +28,11 @@ RUN \
   && adduser -S -u 1000 -H -G www-data2 www-data \
   && chown -R www-data:www-data2 . \
   && cp -a config.php-dist config.php \
-  && sed -i 's/\(memory_limit =\) 128M/\1 256M/' /etc/php7/php.ini \
-  && sed -i 's/;clear_env = .*/clear_env = no/i' /etc/php7/php-fpm.d/www.conf \
-  && sed -i 's/user = .*/user = www-data/i' /etc/php7/php-fpm.d/www.conf \
-  && sed -i 's/group = .*/group = www-data2/i' /etc/php7/php-fpm.d/www.conf \
+  && sed -i 's/worker_processes .*;/worker_processes 1;/' /etc/nginx/nginx.conf \
+  && sed -i 's/memory_limit = 128M/memory_limit = 256M/' /etc/php7/php.ini \
+  && sed -i 's/;clear_env = .*/clear_env = no/' /etc/php7/php-fpm.d/www.conf \
+  && sed -i 's/user = .*/user = www-data/' /etc/php7/php-fpm.d/www.conf \
+  && sed -i 's/group = .*/group = www-data2/' /etc/php7/php-fpm.d/www.conf \
   && tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz \
   && tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz \
   && apk del $BUILD_ONLY_DEPS \
