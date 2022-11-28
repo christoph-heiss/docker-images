@@ -10,7 +10,7 @@ tt-rss must already exist and **are not created automatically**.
 
 ## Usage
 
-Prebuilt Docker images can be found on [ghcr.io](https://github.com/christoph-heiss/tt-rss-docker/pkgs/container/tt-rss).
+Prebuilt Docker images can be found on [ghcr.io](https://github.com/christoph-heiss/docker-images/pkgs/container/tt-rss).
 
 Since tt-rss does not adhere to proper release{s,-cycles}, the images are tagged by
 builddate and git-commit-hash of tt-rss (and both). Thus, the same image is available as e.g.

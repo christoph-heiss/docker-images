@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.title="tt-rss"
 LABEL org.opencontainers.image.description="Tiny Tiny RSS is a free and open source web-based news feed (RSS/Atom) reader and aggregator"
 LABEL org.opencontainers.image.source="https://git.tt-rss.org/fox/tt-rss.git/"
 LABEL org.opencontainers.image.authors="Christoph Heiss <contact@christoph-heiss.at"
-LABEL org.opencontainers.image.url="https://github.com/christoph-heiss/tt-rss-docker"
+LABEL org.opencontainers.image.url="https://github.com/christoph-heiss/docker-images"
 
 ARG TTRSS_GIT_COMMIT
 
