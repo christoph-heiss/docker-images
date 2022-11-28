@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'h5ai/**'
 
 env:
   H5AI_VERSION: 0.30.0
