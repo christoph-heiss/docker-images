@@ -1,4 +1,4 @@
-name: Build Docker image
+name: Build tt-rss Docker image
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - uses: docker/build-push-action@v3
         with:
           push: true
-          context: .
+          context: tt-rss
           build-args: |
             TTRSS_GIT_COMMIT=${{ steps.build-info.outputs.hash }}
           tags: |
