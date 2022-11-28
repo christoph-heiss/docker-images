@@ -1,0 +1,7 @@
+#!/command/with-contenv sh
+
+# Set default values if needed
+export TTRSS_DB_PORT=${TTRSS_DB_PORT:-5432}
+export TTRSS_DB_NAME=${TTRSS_DB_NAME:-$TTRSS_DB_USER}
+
+exec php-fpm7 --nodaemonize
